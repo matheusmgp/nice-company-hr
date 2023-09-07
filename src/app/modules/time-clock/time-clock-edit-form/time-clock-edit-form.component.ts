@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TimeClockService } from '../time-clock.service';
 @Component({
   selector: 'app-time-clock-edit-form',
@@ -13,7 +13,8 @@ export class TimeClockEditFormComponent implements OnInit {
   employeeData: any;
   constructor(
     private route: ActivatedRoute,
-    private readonly timeClockService: TimeClockService
+    private readonly timeClockService: TimeClockService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -38,19 +39,20 @@ export class TimeClockEditFormComponent implements OnInit {
     const payload = {
       status,
     };
-
     try {
       this.timeClockService.update(this.id, payload).subscribe({
         next: () => {
           this.timeClockService.showMessage(
-            `Registro de Ponto atualizado!`,
+            `Registro de Ponto ${status}`,
             false
           );
+          this.router.navigate([`/registros`]);
         },
         error: (err) => console.error('An error occurred :', err),
       });
     } catch (err: unknown) {
       this.timeClockService.showMessage(`Error ${err}`, true);
+      this.router.navigate([`/registros`]);
     }
   }
 }

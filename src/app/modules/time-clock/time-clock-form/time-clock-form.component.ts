@@ -27,11 +27,13 @@ import { TimeClockService } from '../time-clock.service';
 })
 export class TimeClockFormComponent implements OnInit {
   employee: string = '';
+  aviso: string = '';
   separatorKeysCodes: number[] = [ENTER, COMMA];
   @ViewChild('knowledgeInput')
   knowledgeInput!: ElementRef<HTMLInputElement>;
   announcer = inject(LiveAnnouncer);
   filteredKnowledges!: Observable<string[]>;
+
   public form: FormGroup;
   public allConhecimentos: string[] = [
     'Git',
@@ -51,9 +53,11 @@ export class TimeClockFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.employee = this.route.snapshot.paramMap.get('employee') || '';
+    this.aviso = `Olá ${this.employee}, por favor preencha os campos abaixo com atenção e
+  envie,para que possamos prosseguir com seu cadastro do ponto eletrônico.`;
     this.form = this.fb.group({
       name: [
-        '',
+        this.employee,
         [
           Validators.required,
           Validators.minLength(10),
@@ -99,6 +103,8 @@ export class TimeClockFormComponent implements OnInit {
               `Obrigado, seu registro de Ponto foi enviado!`,
               false
             );
+            this.aviso = `Obrigado,entraremos em contato.`;
+            this.form.reset();
           },
           error: (err) => {
             this.timeClockService.showMessage(`${err.error.message}`, true);
