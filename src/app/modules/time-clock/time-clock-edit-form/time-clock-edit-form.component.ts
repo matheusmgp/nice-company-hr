@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TimeClockService } from '../time-clock.service';
+import { Register } from '../entities/register.entity';
 @Component({
   selector: 'app-time-clock-edit-form',
   templateUrl: './time-clock-edit-form.component.html',
@@ -10,7 +10,7 @@ import { TimeClockService } from '../time-clock.service';
 export class TimeClockEditFormComponent implements OnInit {
   id: string = '';
   employee: string = '';
-  employeeData: any;
+  employeeData: Register;
   constructor(
     private route: ActivatedRoute,
     private readonly timeClockService: TimeClockService,
@@ -18,6 +18,7 @@ export class TimeClockEditFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.employeeData = new Register();
     this.id = this.route.snapshot.paramMap.get('id') || '';
     this.employee = this.route.snapshot.paramMap.get('employee') || '';
     this.getEmployee();

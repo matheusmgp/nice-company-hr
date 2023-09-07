@@ -23,14 +23,22 @@
 
         <ng-container matColumnDef="cpf">
           <mat-header-cell *matHeaderCellDef>CPF</mat-header-cell>
-          <mat-cell *matCellDef="let row">{{ row.cpf }}</mat-cell>
+          <mat-cell *matCellDef="let row">{{ row.cpf | cpf }}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="phone">
           <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
-          <mat-cell *matCellDef="let row">{{ row.phone }}</mat-cell>
+          <mat-cell *matCellDef="let row">{{ row.phone | phone }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="updatedAt">
+          <mat-header-cell *matHeaderCellDef
+            >Data última Atualização</mat-header-cell
+          >
+          <mat-cell *matCellDef="let row">{{
+            row.updatedAt | date : "dd/MM/yyyy HH:mm:ss"
+          }}</mat-cell>
         </ng-container>
         <ng-container matColumnDef="status">
-          <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
+          <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
           <mat-cell
             [ngClass]="
               row.status == 'VALIDADO'

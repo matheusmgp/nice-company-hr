@@ -13,7 +13,6 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { FormControlPipe } from 'src/utils/pipes/formcontrol.pipe';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -22,11 +21,12 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TimeClockListComponent } from './time-clock-list/time-clock-list.component';
 import { TimeClockEditFormComponent } from './time-clock-edit-form/time-clock-edit-form.component';
 import { RouterModule } from '@angular/router';
+import { PhonePipe } from 'src/utils/pipes/phone.pipe';
 @NgModule({
   declarations: [
     TimeClockFormComponent,
     CpfPipe,
-    FormControlPipe,
+    PhonePipe,
     TimeClockListComponent,
     TimeClockEditFormComponent,
   ],

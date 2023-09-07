@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { TimeClockService } from '../time-clock.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
+import { Register } from '../entities/register.entity';
 
-export type Registers = {
-  id: number;
-  name: string;
-  email: string;
-  cpf: string;
-  phone: string;
-  status: boolean;
-};
 @Component({
   selector: 'app-time-clock-list',
   templateUrl: './time-clock-list.component.html',
   styleUrls: ['./time-clock-list.component.css'],
 })
 export class TimeClockListComponent implements OnInit {
-  displayedColumns = ['name', 'email', 'cpf', 'phone', 'status', 'editar'];
-  registers: Registers[] = [];
-  public dataSource: MatTableDataSource<Registers>;
+  displayedColumns = [
+    'name',
+    'email',
+    'cpf',
+    'phone',
+    'status',
+    'updatedAt',
+    'editar',
+  ];
+  registers: Register[] = [];
+  public dataSource: MatTableDataSource<Register>;
   constructor(
     private readonly timeClockService: TimeClockService,
     private router: Router
@@ -35,11 +36,8 @@ export class TimeClockListComponent implements OnInit {
     try {
       this.timeClockService.getAll().subscribe({
         next: (retorno: any) => {
-          console.log(retorno);
-          this.registers = retorno.data.map((valor: any) => {
-            return valor;
-          });
-          this.dataSource = new MatTableDataSource<Registers>(this.registers);
+          this.registers = retorno.data;
+          this.dataSource = new MatTableDataSource<Register>(this.registers);
         },
         error: (err) => console.error('An error occurred :', err),
       });
@@ -49,7 +47,6 @@ export class TimeClockListComponent implements OnInit {
   }
 
   edit(name: string, id: string) {
-    console.log('edit', id);
     this.router.navigate([`${name}/validar/${id}`]);
   }
 

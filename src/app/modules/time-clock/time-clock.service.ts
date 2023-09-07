@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, Injector } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root',
 })
@@ -10,7 +11,7 @@ export class TimeClockService {
     private http: HttpClient,
     @Inject(Injector) private injector: Injector
   ) {}
-  url: string = `http://localhost:3000/api/v1`;
+  url: string = environment.api;
   private get toastrService(): ToastrService {
     return this.injector.get(ToastrService);
   }

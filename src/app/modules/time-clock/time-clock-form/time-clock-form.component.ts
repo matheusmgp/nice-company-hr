@@ -6,13 +6,7 @@ import {
   ElementRef,
 } from '@angular/core';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-import {
-  AbstractControl,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Observable } from 'rxjs';
@@ -20,13 +14,14 @@ import { map, startWith } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { ActivatedRoute } from '@angular/router';
 import { TimeClockService } from '../time-clock.service';
+import { Register } from '../entities/register.entity';
 @Component({
   selector: 'app-time-clock-form',
   templateUrl: './time-clock-form.component.html',
   styleUrls: ['./time-clock-form.component.css'],
 })
 export class TimeClockFormComponent implements OnInit {
-  employee: string = '';
+  employee: Register;
   aviso: string = '';
   separatorKeysCodes: number[] = [ENTER, COMMA];
   @ViewChild('knowledgeInput')
@@ -52,12 +47,13 @@ export class TimeClockFormComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.employee = this.route.snapshot.paramMap.get('employee') || '';
-    this.aviso = `Olá ${this.employee}, por favor preencha os campos abaixo com atenção e
-  envie,para que possamos prosseguir com seu cadastro do ponto eletrônico.`;
+    this.employee = new Register();
+    this.employee.name = this.route.snapshot.paramMap.get('employee') || '';
+    this.aviso = `Olá ${this.employee.name}, por favor preencha os campos abaixo com atenção e
+                  envie,para que possamos prosseguir com seu cadastro do ponto eletrônico.`;
     this.form = this.fb.group({
       name: [
-        this.employee,
+        '',
         [
           Validators.required,
           Validators.minLength(10),
