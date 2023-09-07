@@ -31,7 +31,7 @@ export class TimeClockFormComponent implements OnInit {
   knowledgeInput!: ElementRef<HTMLInputElement>;
   announcer = inject(LiveAnnouncer);
   filteredKnowledges!: Observable<string[]>;
-  public form!: FormGroup;
+  public form: FormGroup;
   public allConhecimentos: string[] = [
     'Git',
     'React',
@@ -86,7 +86,7 @@ export class TimeClockFormComponent implements OnInit {
   }
 
   public register() {
-    console.log('register', this.form.value);
+    console.log('register', JSON.stringify(this.form.value));
     if (this.form.valid) {
       /*try {
         this.crudService.create(this.form.value, this.resource).subscribe({

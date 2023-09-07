@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
     email: '',
     password: '',
   };
-  public form!: UntypedFormGroup;
+  public form: UntypedFormGroup;
 
   constructor(private router: Router, private fb: UntypedFormBuilder) {}
 

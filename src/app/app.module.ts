@@ -19,6 +19,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { NgxPaginationModule } from 'ngx-pagination';
 @NgModule({
   declarations: [AppComponent, NavComponent, AuthenticationComponent],
   imports: [
@@ -39,6 +40,7 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     RouterModule,
     MatListModule,
+    NgxPaginationModule,
     NgxMaskModule.forRoot({
       dropSpecialCharacters: false,
     }),

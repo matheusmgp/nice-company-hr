@@ -86,6 +86,12 @@
             [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
             (matChipInputTokenEnd)="add($event)"
           />
+          <mat-error *ngIf="hasError('knowledges', 'required')"
+            >Conhecimentos é requerido</mat-error
+          >
+          <mat-error *ngIf="hasError('cpf', 'minlength')"
+            >Conhecimentos precisa ter no mínimo 1
+          </mat-error>
           <mat-autocomplete
             #auto="matAutocomplete"
             (optionSelected)="selected($event)"
