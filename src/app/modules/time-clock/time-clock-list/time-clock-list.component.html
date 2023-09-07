@@ -32,7 +32,13 @@
         <ng-container matColumnDef="status">
           <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
           <mat-cell
-            [ngClass]="row.status ? 'validado' : 'naovalidado'"
+            [ngClass]="
+              row.status == 'VALIDADO'
+                ? 'validado'
+                : row.status == 'NAO VALIDADO'
+                ? 'naovalidado'
+                : 'pendente'
+            "
             *matCellDef="let row"
             >{{ showStatus(row.status) }}</mat-cell
           >

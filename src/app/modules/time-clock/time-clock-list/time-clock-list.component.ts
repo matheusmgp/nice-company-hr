@@ -48,7 +48,11 @@ export class TimeClockListComponent implements OnInit {
     console.log('edit', id);
   }
 
-  showStatus(status: boolean): string {
-    return status ? 'Validado' : 'Não Validado';
+  showStatus(status: string): string {
+    return status == 'VALIDADO'
+      ? 'Validado'
+      : status == 'NAO VALIDADO'
+      ? 'Não Validado'
+      : 'Pendente';
   }
 }
