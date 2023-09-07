@@ -19,13 +19,13 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = new FormGroup({
-      email: new FormControl('myemail@email.com'),
-      password: new FormControl('myPassword'),
+      email: new FormControl('fake@email.com'),
+      password: new FormControl('FAKE'),
     });
   }
   public async submit() {
     localStorage.setItem('logged', 'true');
-    this.router.navigate(['']).then(() => {
+    this.router.navigate(['registros']).then(() => {
       window.location.reload();
     });
   }

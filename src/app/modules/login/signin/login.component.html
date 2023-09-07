@@ -1,32 +1,49 @@
-<mat-card>
-  <mat-card-title>Login</mat-card-title>
-  <mat-card-content>
-    <form [formGroup]="form" (ngSubmit)="submit()">
-      <p>
-        <mat-form-field>
-          <input
-            type="text"
-            matInput
-            placeholder="Email"
-            formControlName="email"
-          />
-        </mat-form-field>
-      </p>
-
-      <p>
-        <mat-form-field>
-          <input
-            type="password"
-            matInput
-            placeholder="Password"
-            formControlName="password"
-          />
-        </mat-form-field>
-      </p>
-
-      <div class="button">
-        <button type="submit" mat-raised-button color="primary">Login</button>
+<!DOCTYPE html>
+<body>
+  <div class="container">
+    <div class="content first-content">
+      <div class="first-column">
+        <h2 class="title title-primary">Nice Company HR</h2>
+        <p class="description description-primary">
+          Sistema para controle dos registros de ponto eletrônico
+        </p>
       </div>
-    </form>
-  </mat-card-content>
-</mat-card>
+      <div class="second-column">
+        <h2 class="title title-second">Entrar no Sistema</h2>
+
+        <mat-card class="my-card">
+          <mat-card-content>
+            <form class="my-form" [formGroup]="form">
+              <mat-form-field class="full-width">
+                <mat-label>Email</mat-label>
+                <input
+                  matInput
+                  placeholder="Email"
+                  formControlName="email"
+                  type="email"
+                />
+              </mat-form-field>
+              <mat-form-field class="full-width">
+                <mat-label>Senha</mat-label>
+                <input
+                  matInput
+                  placeholder="Senha"
+                  formControlName="password"
+                  type="password"
+                />
+              </mat-form-field>
+            </form>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <button mat-raised-button (click)="submit()" color="primary">
+              Entrar
+            </button>
+            <button mat-raised-button color="accent">Cadastrar-se</button>
+            <a class="password">Esqueceu a senha?</a>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</body>
