@@ -14,8 +14,19 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatIconModule } from '@angular/material/icon';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { FormControlPipe } from 'src/utils/pipes/formcontrol.pipe';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { MatListModule } from '@angular/material/list';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { TimeClockListComponent } from './time-clock-list/time-clock-list.component';
 @NgModule({
-  declarations: [TimeClockFormComponent, CpfPipe, FormControlPipe],
+  declarations: [
+    TimeClockFormComponent,
+    CpfPipe,
+    FormControlPipe,
+    TimeClockListComponent,
+  ],
   imports: [
     CommonModule,
     TimeClockRoutingModule,
@@ -29,6 +40,11 @@ import { FormControlPipe } from 'src/utils/pipes/formcontrol.pipe';
     MatChipsModule,
     MatIconModule,
     MatAutocompleteModule,
+    MatTableModule,
+    MatPaginatorModule,
+    NgxPaginationModule,
+    MatListModule,
+    NoopAnimationsModule,
     NgxMaskModule.forChild(),
   ],
 })

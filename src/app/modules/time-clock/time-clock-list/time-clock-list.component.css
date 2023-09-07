@@ -1,0 +1,50 @@
+.myinput {
+  width: 100%;
+}
+.celular {
+  margin-right: 10px;
+  width: 40%;
+}
+
+.mat-table {
+  overflow-x: scroll;
+  overflow-y: scroll;
+}
+.table {
+  display: block !important;
+}
+.mat-cell {
+  word-wrap: normal;
+  display: table-cell;
+  padding: 8px 8px 8px 8px;
+  line-break: unset;
+  width: fit-content;
+  white-space: nowrap;
+  overflow: hidden;
+  vertical-align: middle;
+  text-align: left;
+}
+
+table {
+  width: 100%;
+  overflow: scroll;
+}
+
+.mat-header-cell {
+  text-align: left;
+  background-color: aliceblue;
+  color: cadetblue;
+  font-size: 15px;
+  font-weight: 570;
+  vertical-align: middle;
+}
+.naovalidado {
+  color: #e35e6b;
+  font-weight: bolder;
+  border-radius: 2;
+}
+.validado {
+  color: #66a3ff;
+  font-weight: bolder;
+  border-radius: 2;
+}

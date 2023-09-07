@@ -18,12 +18,14 @@ import { LiveAnnouncer } from '@angular/cdk/a11y';
 import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-time-clock-form',
   templateUrl: './time-clock-form.component.html',
   styleUrls: ['./time-clock-form.component.css'],
 })
 export class TimeClockFormComponent implements OnInit {
+  employee: string = '';
   separatorKeysCodes: number[] = [ENTER, COMMA];
   @ViewChild('knowledgeInput')
   knowledgeInput!: ElementRef<HTMLInputElement>;
@@ -40,9 +42,10 @@ export class TimeClockFormComponent implements OnInit {
     'TypeScript',
   ];
   public conhecimentos: string[] = [];
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
+    this.employee = this.route.snapshot.paramMap.get('employee') || '';
     this.form = this.fb.group({
       name: [
         '',
