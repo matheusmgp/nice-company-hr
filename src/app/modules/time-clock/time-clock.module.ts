@@ -8,8 +8,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { CpfPipe } from 'src/utils/pipes/cpf.pipe';
+import { NgxMaskModule } from 'ngx-mask';
+import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatIconModule } from '@angular/material/icon';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { FormControlPipe } from 'src/utils/pipes/formcontrol.pipe';
 @NgModule({
-  declarations: [TimeClockFormComponent, CpfPipe],
+  declarations: [TimeClockFormComponent, CpfPipe, FormControlPipe],
   imports: [
     CommonModule,
     TimeClockRoutingModule,
@@ -19,6 +25,11 @@ import { CpfPipe } from 'src/utils/pipes/cpf.pipe';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSelectModule,
+    MatChipsModule,
+    MatIconModule,
+    MatAutocompleteModule,
+    NgxMaskModule.forChild(),
   ],
 })
 export class TimeClockModule {}

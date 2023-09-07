@@ -5,7 +5,7 @@
     >
     <form [formGroup]="form">
       <div>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="myinput">
           <mat-label>Nome</mat-label>
           <input matInput formControlName="name" />
           <mat-error *ngIf="hasError('name', 'required')"
@@ -20,7 +20,7 @@
         </mat-form-field>
       </div>
       <div>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="myinput">
           <mat-label>Email</mat-label>
           <input matInput formControlName="email" />
           <mat-error *ngIf="hasError('email', 'required')"
@@ -38,22 +38,22 @@
         </mat-form-field>
       </div>
       <div>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="celular">
           <mat-label>Celular</mat-label>
-          <input matInput formControlName="phone" />
+          <input matInput formControlName="phone" mask="(00) 00000-0000" />
           <mat-error *ngIf="hasError('phone', 'required')"
             >Celular é requerido</mat-error
           >
           <mat-error *ngIf="hasError('phone', 'maxlength')"
-            >Voce colocou mais de 14 caracteres</mat-error
+            >Voce colocou mais de 20 caracteres</mat-error
           >
           <mat-error *ngIf="hasError('phone', 'minlength')"
             >Celular precisa ter no mínimo 14 caracteres</mat-error
           >
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" class="celular">
           <mat-label>CPF</mat-label>
-          <input matInput formControlName="cpf" />
+          <input matInput formControlName="cpf" mask="000.000.000-00" />
           <mat-error *ngIf="hasError('cpf', 'required')"
             >CPF é requerido</mat-error
           >
@@ -63,6 +63,39 @@
           <mat-error *ngIf="hasError('cpf', 'minlength')"
             >CPF precisa ter no mínimo 14 caracteres</mat-error
           >
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline" class="myinput">
+          <mat-label>Conhecimentos</mat-label>
+          <mat-chip-list #chipGrid aria-label="Conhecimentos">
+            <mat-chip *ngFor="let c of conhecimentos" (removed)="remove(c)">
+              {{ c }}
+              <button matChipRemove [attr.aria-label]="'remove ' + c">
+                <mat-icon>cancel</mat-icon>
+              </button>
+            </mat-chip>
+          </mat-chip-list>
+          <input
+            matInput
+            formControlName="knowledges"
+            placeholder="Meus Conhecimento..."
+            [matChipInputFor]="chipGrid"
+            [matAutocomplete]="auto"
+            [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            (matChipInputTokenEnd)="add($event)"
+          />
+          <mat-autocomplete
+            #auto="matAutocomplete"
+            (optionSelected)="selected($event)"
+          >
+            <mat-option
+              *ngFor="let knowledge of filteredKnowledges | async"
+              [value]="knowledge"
+            >
+              {{ knowledge }}
+            </mat-option>
+          </mat-autocomplete>
         </mat-form-field>
       </div>
     </form>

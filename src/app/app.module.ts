@@ -7,7 +7,8 @@ import { NavComponent } from './nav/nav.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatButtonModule } from '@angular/material/button';
-
+import { NgxMaskModule } from 'ngx-mask';
+import { MatSelectModule } from '@angular/material/select';
 @NgModule({
   declarations: [AppComponent, NavComponent],
   imports: [
@@ -17,6 +18,10 @@ import { MatButtonModule } from '@angular/material/button';
     MatToolbarModule,
     MatSidenavModule,
     MatButtonModule,
+    MatSelectModule,
+    NgxMaskModule.forRoot({
+      dropSpecialCharacters: false,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],
