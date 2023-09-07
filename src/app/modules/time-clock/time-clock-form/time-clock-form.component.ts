@@ -91,20 +91,21 @@ export class TimeClockFormComponent implements OnInit {
   }
 
   public register() {
-    console.log('register', JSON.stringify(this.form.value));
     if (this.form.valid) {
       try {
         this.timeClockService.create(this.form.value).subscribe({
           next: () => {
             this.timeClockService.showMessage(
-              `Registro de Ponto enviado!`,
+              `Obrigado, seu registro de Ponto foi enviado!`,
               false
             );
           },
-          error: (err) => console.error('An error occurred :', err),
+          error: (err) => {
+            this.timeClockService.showMessage(`${err.error.message}`, true);
+          },
         });
-      } catch (err: unknown) {
-        this.timeClockService.showMessage(`Error ${err}`, true);
+      } catch (err) {
+        console.log(err);
       }
     }
   }
