@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
+import { TimeClockService } from '../time-clock.service';
 
 export type Registers = {
   id: number;
@@ -16,50 +17,9 @@ export type Registers = {
 })
 export class TimeClockListComponent implements OnInit {
   displayedColumns = ['name', 'email', 'cpf', 'phone', 'status', 'editar'];
-  registers: Registers[] = [
-    {
-      id: 1,
-      name: 'Maria',
-      email: 'matheus@gmail.com',
-      cpf: '60412390388',
-      phone: '85998033564',
-      status: true,
-    },
-    {
-      id: 1,
-      name: 'Pedro',
-      email: 'matheus@gmail.com',
-      cpf: '60412390388',
-      phone: '85998033564',
-      status: true,
-    },
-    {
-      id: 1,
-      name: 'Pereira',
-      email: 'matheus@gmail.com',
-      cpf: '60412390388',
-      phone: '85998033564',
-      status: true,
-    },
-    {
-      id: 1,
-      name: 'Iara',
-      email: 'matheus@gmail.com',
-      cpf: '60412390388',
-      phone: '85998033564',
-      status: true,
-    },
-    {
-      id: 1,
-      name: 'Gustavo',
-      email: 'matheus@gmail.com',
-      cpf: '60412390388',
-      phone: '85998033564',
-      status: false,
-    },
-  ];
+  registers: Registers[] = [];
   public dataSource: MatTableDataSource<Registers>;
-  constructor() {}
+  constructor(private readonly timeClockService: TimeClockService) {}
 
   ngOnInit(): void {
     this.getRegisters();
@@ -68,9 +28,22 @@ export class TimeClockListComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
   public getRegisters() {
-    this.registers;
-    this.dataSource = new MatTableDataSource<Registers>(this.registers);
+    try {
+      this.timeClockService.getAll().subscribe({
+        next: (retorno: any) => {
+          console.log(retorno);
+          this.registers = retorno.data.map((valor: any) => {
+            return valor;
+          });
+          this.dataSource = new MatTableDataSource<Registers>(this.registers);
+        },
+        error: (err) => console.error('An error occurred :', err),
+      });
+    } catch (error) {
+      console.log(error);
+    }
   }
+
   edit(id: string) {
     console.log('edit', id);
   }

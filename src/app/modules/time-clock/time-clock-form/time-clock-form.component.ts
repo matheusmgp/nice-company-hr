@@ -19,6 +19,7 @@ import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { MatAutocompleteSelectedEvent } from '@angular/material/autocomplete';
 import { ActivatedRoute } from '@angular/router';
+import { TimeClockService } from '../time-clock.service';
 @Component({
   selector: 'app-time-clock-form',
   templateUrl: './time-clock-form.component.html',
@@ -42,7 +43,11 @@ export class TimeClockFormComponent implements OnInit {
     'TypeScript',
   ];
   public conhecimentos: string[] = [];
-  constructor(private fb: FormBuilder, private route: ActivatedRoute) {}
+  constructor(
+    private fb: FormBuilder,
+    private route: ActivatedRoute,
+    private readonly timeClockService: TimeClockService
+  ) {}
 
   ngOnInit(): void {
     this.employee = this.route.snapshot.paramMap.get('employee') || '';
@@ -88,22 +93,19 @@ export class TimeClockFormComponent implements OnInit {
   public register() {
     console.log('register', JSON.stringify(this.form.value));
     if (this.form.valid) {
-      /*try {
-        this.crudService.create(this.form.value, this.resource).subscribe({
-          next: (retorno: any) => {
-            this.submitClicked.emit(retorno);
-            this.dialogRef.close();
-            this.crudService.showMessage(
-              `Categoria Criada com SUCESSO!!!`,
+      try {
+        this.timeClockService.create(this.form.value).subscribe({
+          next: () => {
+            this.timeClockService.showMessage(
+              `Registro de Ponto enviado!`,
               false
             );
           },
           error: (err) => console.error('An error occurred :', err),
         });
       } catch (err: unknown) {
-        this.crudService.showMessage(`Error ${err}`, true);
-        this.router.navigate(['/categorias']);
-      }*/
+        this.timeClockService.showMessage(`Error ${err}`, true);
+      }
     }
   }
   add(event: MatChipInputEvent): void {

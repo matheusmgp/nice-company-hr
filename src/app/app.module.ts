@@ -42,7 +42,13 @@ import { ToastrModule } from 'ngx-toastr';
     RouterModule,
     MatListModule,
     NgxPaginationModule,
-    ToastrModule,
+    ToastrModule.forRoot({
+      timeOut: 3000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      closeButton: true,
+      progressBar: true,
+    }),
     NgxMaskModule.forRoot({
       dropSpecialCharacters: false,
     }),

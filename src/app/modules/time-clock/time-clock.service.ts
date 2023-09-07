@@ -10,7 +10,7 @@ export class TimeClockService {
     private http: HttpClient,
     @Inject(Injector) private injector: Injector
   ) {}
-  url: string = `http://localhost:3000/api/v1/`;
+  url: string = `http://localhost:3000/api/v1`;
   private get toastrService(): ToastrService {
     return this.injector.get(ToastrService);
   }
