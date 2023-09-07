@@ -18,7 +18,7 @@ export class TimeClockService {
     return this.http.get<any[]>(`${this.url}/time-clock`);
   }
   getByID(id: string): Observable<any[]> {
-    return this.http.get<any[]>(`${this.url}/time-clock${id}`);
+    return this.http.get<any[]>(`${this.url}/time-clock/${id}`);
   }
   update(id: string, payload: any): Observable<any[]> {
     const url = `${this.url}/time-clock/${id}`;

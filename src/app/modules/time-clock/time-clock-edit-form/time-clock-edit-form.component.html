@@ -1,0 +1,20 @@
+<div>
+  <mat-card>
+    <h3>Checar dados de : {{ employee }}</h3>
+
+    <mat-card class="meucard">
+      <div class="employeeData">
+        <span>Nome :</span> {{ employeeData.name }} <br />
+        <span>E-mail :</span> {{ employeeData.email }}<br />
+        <span>CPF :</span> {{ employeeData.cpf }}<br />
+        <span>Celular :</span> {{ employeeData.phone }}<br />
+        <span>Conhecimentos :</span> {{ employeeData.knowledges }}<br /></div
+    ></mat-card>
+    <button mat-raised-button (click)="edit('VALIDADO')" color="primary">
+      Validar
+    </button>
+    <button mat-raised-button (click)="edit('NAO VALIDADO')" color="warn">
+      Não Validar
+    </button>
+  </mat-card>
+</div>

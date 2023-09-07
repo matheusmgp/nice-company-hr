@@ -47,7 +47,7 @@
         <ng-container matColumnDef="editar">
           <mat-header-cell *matHeaderCellDef>Editar</mat-header-cell>
           <mat-cell *matCellDef="let row">
-            <a mat-mini-fab (click)="edit(row.id)" color="" primary
+            <a mat-mini-fab (click)="edit(row.name, row.id)" color="" primary
               ><i class="material-icons icon-blue">edit</i></a
             >
           </mat-cell>

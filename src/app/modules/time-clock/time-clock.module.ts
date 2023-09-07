@@ -20,12 +20,15 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { MatListModule } from '@angular/material/list';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { TimeClockListComponent } from './time-clock-list/time-clock-list.component';
+import { TimeClockEditFormComponent } from './time-clock-edit-form/time-clock-edit-form.component';
+import { RouterModule } from '@angular/router';
 @NgModule({
   declarations: [
     TimeClockFormComponent,
     CpfPipe,
     FormControlPipe,
     TimeClockListComponent,
+    TimeClockEditFormComponent,
   ],
   imports: [
     CommonModule,
@@ -43,6 +46,7 @@ import { TimeClockListComponent } from './time-clock-list/time-clock-list.compon
     MatTableModule,
     MatPaginatorModule,
     NgxPaginationModule,
+    RouterModule,
     MatListModule,
     NoopAnimationsModule,
     NgxMaskModule.forChild(),

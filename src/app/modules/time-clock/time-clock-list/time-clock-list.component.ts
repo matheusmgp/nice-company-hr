@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { TimeClockService } from '../time-clock.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 export type Registers = {
   id: number;
@@ -19,7 +20,10 @@ export class TimeClockListComponent implements OnInit {
   displayedColumns = ['name', 'email', 'cpf', 'phone', 'status', 'editar'];
   registers: Registers[] = [];
   public dataSource: MatTableDataSource<Registers>;
-  constructor(private readonly timeClockService: TimeClockService) {}
+  constructor(
+    private readonly timeClockService: TimeClockService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.getRegisters();
@@ -44,8 +48,9 @@ export class TimeClockListComponent implements OnInit {
     }
   }
 
-  edit(id: string) {
+  edit(name: string, id: string) {
     console.log('edit', id);
+    this.router.navigate([`${name}/validar/${id}`]);
   }
 
   showStatus(status: string): string {
