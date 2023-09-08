@@ -20,7 +20,8 @@ export class TimeClockListComponent implements OnInit {
     'editar',
   ];
   registers: Register[] = [];
-  public dataSource: MatTableDataSource<Register>;
+  public dataSource: MatTableDataSource<Register> =
+    new MatTableDataSource<Register>([]);
   constructor(
     private readonly timeClockService: TimeClockService,
     private router: Router
@@ -57,4 +58,5 @@ export class TimeClockListComponent implements OnInit {
       ? 'Não Validado'
       : 'Pendente';
   }
+  public handlePage(e: any) {}
 }
