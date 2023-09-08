@@ -4,18 +4,16 @@ Fake Angular application for NICE COMPANY HR company.
 
 ## Setup
 
-1 - Clone the repository,at branch DEVELOP.
+1 - Clone the repository.
 
 ```bash
 $ git clone https://github.com/matheusmgp/nice-company-hr.git
 ```
-
 2 - Install the project dependencies
 
 ```bash
 $ npm install
 ```
-
 ## Running the app
 
 ```bash
@@ -33,6 +31,7 @@ link:http://localhost:4200/login
 <h1>
 <img src="./src/assets/login_screen.png"/>
 </h1>
+
 
 2 - After fake login,this is the page where you'll find all registers from database.
 
