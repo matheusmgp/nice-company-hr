@@ -5,11 +5,9 @@
   >
     <span style="margin-right: 5px">NICE COMPANY HR </span>
     <button *ngIf="isLogged" mat-button routerLink="/registros">
-      <i class="material-icons"> category </i>Registros
+      <i class="material-icons"> app_registration </i>Registros
     </button>
-    <!--<button *ngIf="isLogged" mat-button routerLink="/matheusgustavo/registrar">
-      <i class="material-icons"> category </i>Link FORM
-    </button>-->
+
     <span class="flexExpand"></span>
     <button *ngIf="isLogged" mat-button (click)="logout()">
       <i class="material-icons">exit_to_app</i> Sair

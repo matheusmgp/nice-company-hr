@@ -16,13 +16,7 @@
 .mat-cell {
   word-wrap: normal;
   display: table-cell;
-  padding: 8px 8px 8px 8px;
-  line-break: unset;
-  width: fit-content;
-  white-space: nowrap;
-  overflow: hidden;
-  vertical-align: middle;
-  text-align: left;
+  padding-top: 5px;
 }
 
 table {
@@ -31,7 +25,7 @@ table {
 }
 
 .mat-header-cell {
-  text-align: left;
+  text-align: center;
   background-color: aliceblue;
   color: cadetblue;
   font-size: 15px;

@@ -37,7 +37,6 @@ export class PhonePipe implements PipeTransform {
         }
       }
       return foneFormatado;
-    }
-    return tel;
+    } else return 'Não Informado';
   }
 }
