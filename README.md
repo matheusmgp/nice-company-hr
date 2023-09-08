@@ -1,13 +1,13 @@
 ## Description
 
-Fake API for NICE COMPANY HR company.
+Fake Angular application for NICE COMPANY HR company.
 
 ## Setup
 
 1 - Clone the repository,at branch DEVELOP.
 
 ```bash
-$ git clone https://github.com/matheusmgp/nice-company-hr-API.git
+$ git clone https://github.com/matheusmgp/nice-company-hr.git
 ```
 
 2 - Install the project dependencies
@@ -16,33 +16,60 @@ $ git clone https://github.com/matheusmgp/nice-company-hr-API.git
 $ npm install
 ```
 
-3 - It's necessary docker in your local machine,to run postgres container image,otherwise,you will need local postgres database.
-
-4 - Run the below bash,to start a postgres docker container image
-
-```bash
-$ docker-compose up -d
-```
-
 ## Running the app
 
 ```bash
 # watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+$ npm start
 ```
 
-## Testing the app
+## Step by Step
 
-```bash
-# unit tests
-$ npm run test:unit
+1 - There is a fake login screen,just to separate admin environment from the employee environment
+,don't worry about credentials,the login operation just set a varianle to localStorage,and reload the page to the list.
 
-# e2e tests
-$ npm run test:e2e
+link:http://localhost:4200/login
 
-# integration tests
-$ npm run test:int
-```
+<h1>
+<img src="./src/assets/login_screen.png"/>
+</h1>
+
+2 - After fake login,this is the page where you'll find all registers from database.
+
+link:http://localhost:4200/registros
+
+<h1>
+<img src="./src/assets/lista_1.png"/>
+</h1>
+3 - To see details click in 'Visualizar' button,then this is the page where you can validate or not a register.
+
+link:http://localhost:4200/AdrianaAlmeida/validar/2
+
+<h1>
+<img src="./src/assets/detalhe.png"/>
+</h1>
+
+4 - Assuming that you are the admin,and there is a new employee,and you need to send him a link via email for example
+
+link examples:
+http://localhost:4200/employeeName/registrar
+http://localhost:4200/randomName/registrar
+http://localhost:4200/myName/registrar
+
+after opening one of these links:
+
+<h1>
+<img src="./src/assets/registrar_screen.png"/>
+</h1>
+
+warnings
+
+<h1>
+<img src="./src/assets/registrar_screen_warns.png"/>
+</h1>
+
+5 - After sending the form:
+
+<h1>
+<img src="./src/assets/registrar_screen_2.png"/>
+</h1>
