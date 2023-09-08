@@ -1,0 +1,78 @@
+<div class="container">
+  <mat-card>
+    <h1>Lista de Registros</h1>
+
+    <mat-form-field>
+      <input
+        #register
+        matInput
+        (keyup)="applyFilter(register.value)"
+        placeholder="Pesquisar Registros"
+      />
+    </mat-form-field>
+    <div class="">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef>Nome</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{ row.name }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef>Email</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{ row.email }}</mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="cpf">
+          <mat-header-cell *matHeaderCellDef>CPF</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{ row.cpf | cpf }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="phone">
+          <mat-header-cell *matHeaderCellDef>Telefone</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{ row.phone | phone }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="updatedAt">
+          <mat-header-cell *matHeaderCellDef>Data</mat-header-cell>
+          <mat-cell *matCellDef="let row">{{
+            row.updatedAt | date : "dd/MM/yyyy HH:mm:ss"
+          }}</mat-cell>
+        </ng-container>
+        <ng-container matColumnDef="status">
+          <mat-header-cell *matHeaderCellDef>Status</mat-header-cell>
+          <mat-cell
+            [ngClass]="
+              row.status == 'VALIDADO'
+                ? 'validado'
+                : row.status == 'NAO VALIDADO'
+                ? 'naovalidado'
+                : 'pendente'
+            "
+            *matCellDef="let row"
+            >{{ showStatus(row.status) }}</mat-cell
+          >
+        </ng-container>
+
+        <ng-container matColumnDef="editar">
+          <mat-header-cell *matHeaderCellDef>Editar</mat-header-cell>
+          <mat-cell *matCellDef="let row">
+            <a
+              mat-raised-button
+              (click)="edit(row.name, row.id)"
+              color="primary"
+              primary
+              >Visualizar</a
+            >
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </table>
+    </div>
+    <mat-paginator
+      [length]="100"
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+      aria-label="Select page"
+    >
+    </mat-paginator>
+  </mat-card>
+</div>

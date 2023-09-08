@@ -1,0 +1,21 @@
+<div>
+  <mat-toolbar
+    style="background-color: #730099; color: white"
+    class="example-toolbar"
+  >
+    <span style="margin-right: 5px">NICE COMPANY HR </span>
+    <button *ngIf="isLogged" mat-button routerLink="/registros">
+      <i class="material-icons"> app_registration </i>Registros
+    </button>
+
+    <span class="flexExpand"></span>
+    <button *ngIf="isLogged" mat-button (click)="logout()">
+      <i class="material-icons">exit_to_app</i> Sair
+    </button>
+  </mat-toolbar>
+  <mat-sidenav-container>
+    <mat-sidenav-content class="sidenav-container">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

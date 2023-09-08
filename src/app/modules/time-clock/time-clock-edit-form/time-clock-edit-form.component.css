@@ -1,0 +1,23 @@
+.myinput {
+  width: 100%;
+}
+.celular {
+  margin-right: 10px;
+  width: 40%;
+}
+
+.employeeData {
+  font-weight: bold;
+  font-size: 23px;
+}
+
+.employeeData span {
+  color: #009999;
+}
+.meucard {
+  margin-bottom: 10px;
+}
+
+button {
+  margin-left: 5px;
+}
