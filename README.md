@@ -1,27 +1,48 @@
-# NiceCompanyHr
+## Description
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
+Fake API for NICE COMPANY HR company.
 
-## Development server
+## Setup
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1 - Clone the repository,at branch DEVELOP.
 
-## Code scaffolding
+```bash
+$ git clone https://github.com/matheusmgp/nice-company-hr-API.git
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2 - Install the project dependencies
 
-## Build
+```bash
+$ npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+3 - It's necessary docker in your local machine,to run postgres container image,otherwise,you will need local postgres database.
 
-## Running unit tests
+4 - Run the below bash,to start a postgres docker container image
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```bash
+$ docker-compose up -d
+```
 
-## Running end-to-end tests
+## Running the app
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```bash
+# watch mode
+$ npm run start:dev
 
-## Further help
+# production mode
+$ npm run start:prod
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Testing the app
+
+```bash
+# unit tests
+$ npm run test:unit
+
+# e2e tests
+$ npm run test:e2e
+
+# integration tests
+$ npm run test:int
+```
