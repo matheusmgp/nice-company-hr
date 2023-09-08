@@ -84,6 +84,16 @@ export class TimeClockFormComponent implements OnInit {
   }
 
   public register() {
+    const isValid = this.allConhecimentos.some((r) =>
+      this.conhecimentos.includes(r)
+    );
+
+    if (!isValid)
+      return this.timeClockService.showMessage(
+        `Valor inválido no campo Conhecimentos`,
+        true
+      );
+
     if (this.form.valid) {
       try {
         this.timeClockService.create(this.form.value).subscribe({
@@ -94,6 +104,7 @@ export class TimeClockFormComponent implements OnInit {
             );
             this.aviso = `Obrigado,entraremos em contato.`;
             this.form.reset();
+            this.conhecimentos = [];
           },
           error: (err) => {
             this.timeClockService.showMessage(`${err.error.message}`, true);
@@ -132,7 +143,7 @@ export class TimeClockFormComponent implements OnInit {
     if (this.conhecimentos.length < 3 && !this.conhecimentos.includes(value)) {
       this.conhecimentos.push(value);
     }
-    //this.form.controls['knowledges'].setValue(null);
+
     this.form.controls['knowledges'].setValue(this.conhecimentos);
   }
   public hasError = (controlName: string, errorName: string) => {
