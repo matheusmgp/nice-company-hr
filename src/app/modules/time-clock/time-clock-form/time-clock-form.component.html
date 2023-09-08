@@ -71,13 +71,21 @@
       <div>
         <mat-form-field appearance="outline" class="myinput">
           <mat-label>Conhecimentos</mat-label>
-          <mat-chip-list #chipGrid aria-label="Conhecimentos">
-            <mat-chip *ngFor="let c of conhecimentos" (removed)="remove(c)">
+          <!-- <mat-chip-list #chipGrid aria-label="Conhecimentos">
+           <mat-chip *ngFor="let c of conhecimentos" (removed)="remove(c)">
               {{ c }}
               <button matChipRemove [attr.aria-label]="'remove ' + c">
                 <mat-icon>cancel</mat-icon>
               </button>
             </mat-chip>
+          </mat-chip-list>-->
+          <mat-chip-list #chipGrid>
+            <ng-container *ngFor="let c of conhecimentos">
+              <mat-chip class="cardinal-colors" (click)="remove(c)">
+                {{ c }}
+                <mat-icon class="mat-chip-remove">cancel</mat-icon>
+              </mat-chip>
+            </ng-container>
           </mat-chip-list>
           <input
             matInput
@@ -91,7 +99,7 @@
           <mat-error *ngIf="hasError('knowledges', 'required')"
             >Conhecimentos é requerido</mat-error
           >
-          <mat-error *ngIf="hasError('cpf', 'minlength')"
+          <mat-error *ngIf="hasError('knowledges', 'minlength')"
             >Conhecimentos precisa ter no mínimo 1
           </mat-error>
           <mat-autocomplete

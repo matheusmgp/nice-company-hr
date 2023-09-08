@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { TimeClockService } from '../time-clock.service';
 import { Router } from '@angular/router';
 import { Register } from '../entities/register.entity';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-time-clock-list',
@@ -19,6 +20,7 @@ export class TimeClockListComponent implements OnInit {
     'updatedAt',
     'editar',
   ];
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   registers: Register[] = [];
   public dataSource: MatTableDataSource<Register> =
     new MatTableDataSource<Register>([]);
@@ -38,7 +40,8 @@ export class TimeClockListComponent implements OnInit {
       this.timeClockService.getAll().subscribe({
         next: (retorno: any) => {
           this.registers = retorno.data;
-          this.dataSource = new MatTableDataSource<Register>(this.registers);
+          this.dataSource.data = this.registers;
+          this.dataSource.paginator = this.paginator;
         },
         error: (err) => console.error('An error occurred :', err),
       });
@@ -58,5 +61,4 @@ export class TimeClockListComponent implements OnInit {
       ? 'Não Validado'
       : 'Pendente';
   }
-  public handlePage(e: any) {}
 }
