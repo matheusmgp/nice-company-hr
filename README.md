@@ -8,6 +8,8 @@ Fake Angular application for NICE COMPANY HR company.
 
 ```bash
 $ git clone https://github.com/matheusmgp/nice-company-hr.git
+
+$ git checkout develop
 ```
 
 2 - Install the project dependencies
