@@ -72,14 +72,7 @@ export class TimeClockFormComponent implements OnInit {
           Validators.minLength(14),
         ],
       ],
-      phone: [
-        '',
-        [
-          Validators.required,
-          Validators.maxLength(20),
-          Validators.minLength(10),
-        ],
-      ],
+      phone: ['', [Validators.maxLength(15), Validators.minLength(15)]],
       knowledges: [[], [Validators.required, Validators.minLength(1)]],
     });
     this.filteredKnowledges = this.form.controls[
