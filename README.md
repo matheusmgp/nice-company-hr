@@ -1,27 +1,75 @@
-# NiceCompanyHr
+## Description
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.6.
+Fake Angular application for NICE COMPANY HR company.
 
-## Development server
+## Setup
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+1 - Clone the repository,at branch DEVELOP.
 
-## Code scaffolding
+```bash
+$ git clone https://github.com/matheusmgp/nice-company-hr.git
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+2 - Install the project dependencies
 
-## Build
+```bash
+$ npm install
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Running the app
 
-## Running unit tests
+```bash
+# watch mode
+$ npm start
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Step by Step
 
-## Running end-to-end tests
+1 - There is a fake login screen,just to separate admin environment from the employee environment
+,don't worry about credentials,the login operation just set a varianle to localStorage,and reload the page to the list.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+link:http://localhost:4200/login
 
-## Further help
+<h1>
+<img src="./src/assets/login_screen.png"/>
+</h1>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2 - After fake login,this is the page where you'll find all registers from database.
+
+link:http://localhost:4200/registros
+
+<h1>
+<img src="./src/assets/lista_1.png"/>
+</h1>
+3 - To see details click in 'Visualizar' button,then this is the page where you can validate or not a register.
+
+link:http://localhost:4200/AdrianaAlmeida/validar/2
+
+<h1>
+<img src="./src/assets/detalhe.png"/>
+</h1>
+
+4 - Assuming that you are the admin,and there is a new employee,and you need to send him a link via email for example
+
+link examples:
+http://localhost:4200/employeeName/registrar
+http://localhost:4200/randomName/registrar
+http://localhost:4200/myName/registrar
+
+after opening one of these links:
+
+<h1>
+<img src="./src/assets/registrar_screen.png"/>
+</h1>
+
+warnings
+
+<h1>
+<img src="./src/assets/registrar_screen_warns.png"/>
+</h1>
+
+5 - After sending the form:
+
+<h1>
+<img src="./src/assets/registrar_screen_2.png"/>
+</h1>
